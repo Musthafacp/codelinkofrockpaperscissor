@@ -1,0 +1,60 @@
+Rock Paper Scissor 
+
+Psuodocode
+
+1. Display a welcome message and rules of the game.
+2. Prompt the user to choose rock, paper, or scissors.
+3. Generate a random choice for the computer (rock, paper, or scissors).
+4. Determine the winner based on the user's choice and the computer's choice.
+5. Display the result (win, lose, or draw).
+6. Ask the user if they want to play again.
+7. If yes, go to step 2; otherwise, display a farewell message and end the game.
+
+
+
+
+C++ Code
+
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+int main() {
+    random_device rd;
+    mt19937 gen(rd());
+
+    string choices[] = {"rock", "paper", "scissors"};
+    string userChoice, computerChoice;
+    char playAgain;
+
+    do {
+        cout << "Welcome to Rock, Paper, Scissors!\n";
+        cout << "Enter your choice (rock, paper, or scissors): ";
+        cin >> userChoice;
+
+        uniform_int_distribution<int> distribution(0, 2);
+        int randomIndex = distribution(gen);
+        computerChoice = choices[randomIndex];
+
+        cout << "Computer chose: " << computerChoice << endl;
+
+        if (userChoice == computerChoice) {
+            cout << "It's a draw!\n";
+        } else if ((userChoice == "rock" && computerChoice == "scissors") ||
+                   (userChoice == "paper" && computerChoice == "rock") ||
+                   (userChoice == "scissors" && computerChoice == "paper")) {
+            cout << "You win!\n";
+        } else {
+            cout << "Computer wins!\n";
+        }
+
+        cout << "Do you want to play again? (y/n): ";
+        cin >> playAgain;
+
+    } while (playAgain == 'y' || playAgain == 'Y');
+
+    cout << "Thanks for playing! Goodbye.\n";
+
+    return 0;
+}  
