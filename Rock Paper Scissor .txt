@@ -2,16 +2,19 @@ Rock Paper Scissor
 
 C++ Code
 
+
 #include <iostream>
 #include <random>
+#include <vector>
+#include <cstring>
 
 using namespace std;
 
 int main() {
-    random_device rd;
-    mt19937 gen(rd());
+    randomDevice rd;
+    defaultrandomengine gen(rd());
 
-    string choices[] = {"rock", "paper", "scissors"};
+    const string choices[] = {"rock", "paper", "scissors"};
     string userChoice, computerChoice;
     char playAgain;
 
@@ -44,4 +47,4 @@ int main() {
     cout << "Thanks for playing! Goodbye.\n";
 
     return 0;
-}  
+}
