@@ -2,30 +2,27 @@ Rock Paper Scissor
 
 C++ Code
 
-
 #include <iostream>
 #include <random>
-#include <vector>
-#include <cstring>
 
 using namespace std;
 
 int main() {
-    randomDevice rd;
-    defaultrandomengine gen(rd());
+    random_device rd;
+    default_random_engine gen(rd());
 
     const string choices[] = {"rock", "paper", "scissors"};
     string userChoice, computerChoice;
-    char playAgain;
+    char playAgain = 'y';
 
-    do {
+    while (playAgain == 'y' || playAgain == 'Y') {
         cout << "Welcome to Rock, Paper, Scissors!\n";
         cout << "Enter your choice (rock, paper, or scissors): ";
         cin >> userChoice;
 
         uniform_int_distribution<int> distribution(0, 2);
-        int randomIndex = distribution(gen);
-        computerChoice = choices[randomIndex];
+        int rndmindex = distribution(gen);
+        computerChoice = choices[rndmindex];
 
         cout << "Computer chose: " << computerChoice << endl;
 
@@ -41,8 +38,7 @@ int main() {
 
         cout << "Do you want to play again? (y/n): ";
         cin >> playAgain;
-
-    } while (playAgain == 'y' || playAgain == 'Y');
+    }
 
     cout << "Thanks for playing! Goodbye.\n";
 
